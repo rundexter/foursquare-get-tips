@@ -183,7 +183,7 @@ module.exports = {
             this.apiRequest(
                 'get',
                 'venues/' + step.input('VENUE_ID').first() + '/tips',
-                this.foursquareAuthParams(dexter),
+                _.merge(this.foursquareAuthParams(dexter), _.omit(step.inputs(), 'VENUE_ID')),
                 function (error, response, body) {
                     var errorType = this.checkResponseError(body);
 
